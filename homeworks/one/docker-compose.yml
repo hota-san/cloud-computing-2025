@@ -1,9 +1,11 @@
+version: "3.8"
+
 services:
-  llm-inference-service:
-    image: # Use your own image (that already pushed to docker hub)
+  llm-inference:
+    image: hotasan/llm-inference-image:latest  # Use your published Docker Hub image
     ports:
-      - # Host port 8080 maps to container port 5000
+      - "8080:80"  # Map container port 80 to host 8080
     environment:
-      # Set the `METRICS_LOG_FILE` value to be `inside_compose_inference_metrics.csv`
+      METRICS_LOG_FILE: "/app/inside_compose_inference_metrics.csv"  # Set correct log file name
     volumes:
-      - # Mount volume to get output in you host machine in a file named `compose_inference_metrics.csv`
+      - "./compose_inference_metrics.csv:/app/inside_compose_inference_metrics.csv"  # Map container file to host
