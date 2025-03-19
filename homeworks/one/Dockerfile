@@ -1,15 +1,21 @@
-# 1. Use the official Python 3.12-slim image as the base image
+# Step 1: Use the official Python 3.12-slim image
+FROM python:3.12-slim
 
-# 2. Set the working directory inside the container to /app
+# Step 2: Set the working directory inside the container
+WORKDIR /app
 
-# 3. Copy the requirements.txt file from the host machine to the container's working directory
+# Step 3: Copy the requirements file and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# 4. Install Python dependencies listed in requirements.txt
+# Step 4: Copy the application file
+COPY app.py .
 
-# 6. Copy the app.py file from the host machine to the container's working directory
+# Step 5: Set an environment variable for the CSV file
+ENV CSV_FILE=docker_system_inference_metrics.csv
 
-# 7. Set an environment variable inside the container for the metrics csv file This variable specifies the name of the csv file to be used by the application which must be docker_system_inference_metrics.csv
+# Step 6: Expose port 5000
+EXPOSE 5000
 
-# 8. Expose port 5000 to allow external access to the application running inside the container
-
-# 9. Specify the command to run the application when the container starts
+# Step 7: Run the application
+CMD ["python", "app.py"]
