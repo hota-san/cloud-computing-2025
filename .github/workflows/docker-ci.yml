@@ -43,7 +43,7 @@ jobs:
       # Step 6: Build the Docker image
       - name: Build Docker Image
         run: |
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/llm-inference-image .
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/llm-inference-image ./homeworks/one
 
       # Step 7: Push the image to Docker Hub
       - name: Push Docker Image
