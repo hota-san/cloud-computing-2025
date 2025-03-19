@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py .
 
 # Step 5: Set an environment variable for the CSV file
-ENV CSV_FILE=docker_system_inference_metrics.csv
+ENV METRICS_LOG_FILE=docker_system_inference_metrics.csv
 
 # Step 6: Expose port 5000
 EXPOSE 5000
