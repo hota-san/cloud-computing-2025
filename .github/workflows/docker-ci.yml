@@ -26,7 +26,7 @@ jobs:
       # Step 3: Install dependencies (for testing)
       - name: Install Dependencies
         run: |
-          pip install -r requirements.txt
+          pip install -r ./homework/one/requirements.txt
 
       # Step 4: Run tests (if you have them)
       - name: Run Tests
